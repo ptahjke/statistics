@@ -1,9 +1,8 @@
 для запуска проекта выполнить из корня
 ```
-    php -S localhost:8000 -t ./public
+    docker-compose up
 ```
 ```
-get http://localhost:8000/statistics
-post http://localhost:8000/statistics
+get http://localhost:8001/statistics
+post http://localhost:8001/statistics
 ```
-докер не успел доковырять - давно не собирал кастомные образы

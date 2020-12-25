@@ -9,18 +9,30 @@ services:
       - "8001:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      default:
+        aliases:
+          - nginx
   php:
-    image: php:7.4-fpm
+    build: ./php
     volumes:
       - ./:/var/www/html
       - ./storage/logs:/var/www/html/storage/logs
     working_dir: /var/www/html/
     command: php-fpm
-    links:
+    depends_on:
       - redis
     ports:
       - "9001:9001"
     environment:
-      REDIS_HOST: 127.0.0.1:6379
+      REDIS_HOST: redis
+    networks:
+      default:
+        aliases:
+          - php-fpm
   redis:
     image: redis:alpine
+    networks:
+      default:
+        aliases:
+          - redis
