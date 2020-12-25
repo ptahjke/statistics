@@ -3,11 +3,17 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -28,27 +34,41 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param Exception $exception
      * @return void
      */
-    public function report(Exception $exception)
-    {
-        parent::report($exception);
+    public function report(
+        Exception $exception
+    ) {
+        $logger = app(LoggerInterface::class);
+        $logger->error($exception->getMessage(), [
+            'trace' => $exception->getTraceAsString(),
+        ]);
     }
 
     /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @param Exception $e
+     * @return Response|JsonResponse
      */
     public function render($request, Exception $e)
     {
         $rendered = parent::render($request, $e);
 
+        switch (true) {
+            case $e instanceof MethodNotAllowedHttpException:
+                $message = 'Method not allowed';
+                break;
+            case $e instanceof NotFoundHttpException:
+                $message = 'Url not found';
+                break;
+            default:
+                $message = 'Internal server error';
+                break;
+        }
+
         return response()->json([
-            'message' => $e->getMessage(),
+            'message' => $message,
         ], $rendered->getStatusCode());
     }
 }

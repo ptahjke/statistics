@@ -36,6 +36,7 @@ class SiteVisitStatisticsController extends Controller
         SiteVisitCollectingRequest $collectingRequest,
         SiteVisitStatistics $siteVisitStatistics
     ): void {
+        // данный сервис можно убрать в очередь, если количество статистики будет расти
         $siteVisitStatistics->collect($collectingRequest->getCityCode());
     }
 }

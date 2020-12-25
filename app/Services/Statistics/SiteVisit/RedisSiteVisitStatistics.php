@@ -7,6 +7,14 @@ namespace App\Services\Statistics\SiteVisit;
 use App\Services\Statistics\SiteVisit\DTO\SiteVisitStatisticsDTO;
 use Illuminate\Redis\RedisManager;
 
+/*
+ обработку ошибок не вижу смысла тут делать, т.к. в глобавльном обработчике идет логирование
+ если же нам нужны будут кастомные логи, то можно легко инжектировать psr LoggerInterface
+ и добавить нужное логирование
+ если в добавок нужно показать пользователю кастомное сообщение -
+ то я бы сделал кастомный экспешнк (унаследованный от общего абстрактного исключения или интерфейса) с нужным текстом
+ добавил бы обработку таких исключений в глобавльном обработчике и отдавал бы текст таких исключений на ружу
+*/
 final class RedisSiteVisitStatistics implements SiteVisitStatistics
 {
     private const CACHE_KEY_SITE_VISIT_STATISTICS = 'SITE_VISIT_STATISTICS';
