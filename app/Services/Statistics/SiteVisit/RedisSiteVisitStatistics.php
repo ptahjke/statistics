@@ -56,12 +56,6 @@ final class RedisSiteVisitStatistics implements SiteVisitStatistics
      */
     public function collect(string $cityCode): void
     {
-        // можно было бы создать ключи для всех стран заранее
-        // тогда бы не нужно было делать лишний запрос hexists
-        if ($this->redisManager->hexists(self::CACHE_KEY_SITE_VISIT_STATISTICS, $cityCode)) {
-            $this->redisManager->hincrby(self::CACHE_KEY_SITE_VISIT_STATISTICS, $cityCode, self::VISIT_COUNT);
-        } else {
-            $this->redisManager->hset(self::CACHE_KEY_SITE_VISIT_STATISTICS, $cityCode, self::VISIT_COUNT);
-        }
+        $this->redisManager->hincrby(self::CACHE_KEY_SITE_VISIT_STATISTICS, $cityCode, self::VISIT_COUNT);
     }
 }
