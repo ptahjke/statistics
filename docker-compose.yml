@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nginx-php-redis:
+    build: ./nginx-php
+    volumes:
+      - "./www:/var/www"
+      - "./redis/data:/var/lib/redis"
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:6379:6379"
