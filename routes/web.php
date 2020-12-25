@@ -19,5 +19,5 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/statistics', 'Statistics\SiteVisitStatisticsController@statistics');
-$router->post('/statistics', 'Statistics\SiteVisitStatisticsController@collect');
+$router->get('/statistics/site-visits', 'Statistics\SiteVisitStatisticsController@statistics');
+$router->post('/statistics/site-visits', 'Statistics\SiteVisitStatisticsController@collect');

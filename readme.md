@@ -3,6 +3,6 @@
     docker-compose up
 ```
 ```
-get http://localhost:8001/statistics
-post http://localhost:8001/statistics
+get http://localhost:8001/statistics/site-visits
+post http://localhost:8001/statistics/site-visits
 ```
