@@ -44,8 +44,8 @@ final class RedisSiteVisitStatistics implements SiteVisitStatistics
         $statistics = $this->redisManager->hgetall(self::CACHE_KEY_SITE_VISIT_STATISTICS);
 
         $result = [];
-        foreach ($statistics as $cityCode => $visitCount) {
-            $result[] = new SiteVisitStatisticsDTO($cityCode, (int) $visitCount);
+        foreach ($statistics as $countryCode => $visitCount) {
+            $result[] = new SiteVisitStatisticsDTO((string) $countryCode, (int) $visitCount);
         }
 
         return $result;
@@ -54,8 +54,8 @@ final class RedisSiteVisitStatistics implements SiteVisitStatistics
     /**
      * @inheritDoc
      */
-    public function collect(string $cityCode): void
+    public function collect(string $countryCode): void
     {
-        $this->redisManager->hincrby(self::CACHE_KEY_SITE_VISIT_STATISTICS, $cityCode, self::VISIT_COUNT);
+        $this->redisManager->hincrby(self::CACHE_KEY_SITE_VISIT_STATISTICS, $countryCode, self::VISIT_COUNT);
     }
 }

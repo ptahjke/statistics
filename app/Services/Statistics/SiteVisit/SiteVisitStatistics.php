@@ -14,7 +14,7 @@ interface SiteVisitStatistics
     public function get(): array;
 
     /**
-     * @param string $cityCode
+     * @param string $countryCode
      */
-    public function collect(string $cityCode): void;
+    public function collect(string $countryCode): void;
 }

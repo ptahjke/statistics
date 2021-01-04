@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Request\Statistics;
 
+use LVR\CountryCode\Two;
 use Urameshibr\Requests\FormRequest;
 
 class SiteVisitCollectingRequest extends FormRequest
@@ -22,15 +23,15 @@ class SiteVisitCollectingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'city_code' => 'required|string',
+            'country_code' => ['required', 'string', new Two()],
         ];
     }
 
     /**
      * @return string
      */
-    public function getCityCode(): string
+    public function getCountryCode(): string
     {
-        return (string) $this->post('city_code');
+        return (string) $this->post('country_code');
     }
 }

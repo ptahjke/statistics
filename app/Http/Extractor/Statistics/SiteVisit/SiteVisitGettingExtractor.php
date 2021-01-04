@@ -16,7 +16,7 @@ final class SiteVisitGettingExtractor
     {
         $result = [];
         foreach ($siteVisitStatisticsDTOs as $siteVisitStatisticsDTO) {
-            $result[$siteVisitStatisticsDTO->getCityCode()] = $siteVisitStatisticsDTO->getVisitCount();
+            $result[$siteVisitStatisticsDTO->getCountryCode()] = $siteVisitStatisticsDTO->getVisitCount();
         }
 
         return $result;

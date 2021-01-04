@@ -6,25 +6,25 @@ namespace App\Services\Statistics\SiteVisit\DTO;
 
 class SiteVisitStatisticsDTO
 {
-    private string $cityCode;
+    private string $countryCode;
     private int $visitCount;
 
     /**
-     * @param string $cityCode
+     * @param string $countryCode
      * @param int $visitCount
      */
-    public function __construct(string $cityCode, int $visitCount)
+    public function __construct(string $countryCode, int $visitCount)
     {
-        $this->cityCode = $cityCode;
+        $this->countryCode = $countryCode;
         $this->visitCount = $visitCount;
     }
 
     /**
      * @return string
      */
-    public function getCityCode(): string
+    public function getCountryCode(): string
     {
-        return $this->cityCode;
+        return $this->countryCode;
     }
 
     /**

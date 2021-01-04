@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8a4d585ae3094f3fb38490b9b1b2e83",
+    "content-hash": "94cd5031294a7e8f40e14a602fd37943",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1421,6 +1421,52 @@
             "time": "2019-06-20T13:13:59+00:00"
         },
         {
+            "name": "laravel-validation-rules/country-codes",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-validation-rules/country-codes.git",
+                "reference": "e99a5f7be9cf0c73a9f66ef64095e0260cb1fe4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-validation-rules/country-codes/zipball/e99a5f7be9cf0c73a9f66ef64095e0260cb1fe4e",
+                "reference": "e99a5f7be9cf0c73a9f66ef64095e0260cb1fe4e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.5|^6.0|^7.0|^8.0",
+                "league/iso3166": "^2.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5|^4.0|^5.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LVR\\CountryCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ashley Clarke",
+                    "email": "me@ashleyclarke.me"
+                }
+            ],
+            "description": "Validate country codes.",
+            "keywords": [
+                "country",
+                "laravel",
+                "validation"
+            ],
+            "time": "2020-09-16T17:52:16+00:00"
+        },
+        {
             "name": "laravel/lumen-framework",
             "version": "v5.8.13",
             "source": {
@@ -1503,6 +1549,60 @@
                 "lumen"
             ],
             "time": "2019-08-28T21:21:05+00:00"
+        },
+        {
+            "name": "league/iso3166",
+            "version": "2.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/iso3166.git",
+                "reference": "aed3b32fc293afdf2c6c6a322c2408eb5d20804a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/iso3166/zipball/aed3b32fc293afdf2c6c6a322c2408eb5d20804a",
+                "reference": "aed3b32fc293afdf2c6c6a322c2408eb5d20804a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.12",
+                "phpunit/phpunit": "^5.7.11 || ^6.0 || ^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\ISO3166\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com"
+                }
+            ],
+            "description": "ISO 3166-1 PHP Library",
+            "homepage": "https://github.com/thephpleague/iso3166",
+            "keywords": [
+                "3166",
+                "3166-1",
+                "ISO 3166",
+                "countries",
+                "iso",
+                "library"
+            ],
+            "time": "2020-01-29T07:08:12+00:00"
         },
         {
             "name": "monolog/monolog",
