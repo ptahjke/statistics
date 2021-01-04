@@ -56,6 +56,10 @@ final class RedisSiteVisitStatistics implements SiteVisitStatistics
      */
     public function collect(string $countryCode): void
     {
-        $this->redisManager->hincrby(self::CACHE_KEY_SITE_VISIT_STATISTICS, $countryCode, self::VISIT_COUNT);
+        $this->redisManager->hincrby(
+            self::CACHE_KEY_SITE_VISIT_STATISTICS,
+            strtolower($countryCode),
+            self::VISIT_COUNT
+        );
     }
 }
