@@ -1,5 +1,6 @@
 для запуска проекта выполнить из корня
 ```
+    docker-compose build --no-cache
     docker-compose up
 ```
 ```
